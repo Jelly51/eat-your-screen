@@ -6,7 +6,7 @@
   --ft:'Newsreader',Georgia,'Times New Roman',serif;
   background:var(--paper); color:var(--ink);
   font-family:var(--ft); font-size:17px; line-height:1.62;
-  padding:0 0 8px; position:relative; overflow:hidden;
+  padding:0 0 8px; position:relative; overflow:hidden; text-align:left;
   width:100vw; max-width:100vw; margin-left:calc(50% - 50vw);
 }
 .eys *{ box-sizing:border-box; }
@@ -36,9 +36,10 @@
   letter-spacing:.1em; text-transform:uppercase;
   border:2px solid var(--ink); background:var(--ink); color:var(--paper);
   transition:background .18s,color .18s; }
-.eys .btn:hover{ background:transparent; color:var(--ink); }
-.eys .btn-g{ background:transparent; color:var(--ink); }
-.eys .btn-g:hover{ background:var(--ink); color:var(--paper); }
+.eys a.btn{ color:var(--paper) !important; }
+.eys a.btn:hover{ background:transparent; color:var(--ink) !important; }
+.eys a.btn-g{ background:transparent; color:var(--ink) !important; }
+.eys a.btn-g:hover{ background:var(--ink); color:var(--paper) !important; }
 
 /* ---- hero ---- */
 /* masthead bar — broadsheet nameplate, not a sticky app header */
@@ -59,7 +60,10 @@
 .eys .nl a.on{ color:var(--ink); border-bottom-color:var(--ink); }
 @media (max-width:640px){
   .eys .nav-top{ padding:16px 0 12px; }
-  .eys .nl{ gap:18px; }
+  .eys .nl{ gap:20px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none;
+    -webkit-overflow-scrolling:touch; }
+  .eys .nl::-webkit-scrollbar{ display:none; }
+  .eys .nl a{ white-space:nowrap; flex:0 0 auto; }
 }
 
 .eys .hero{ padding:84px 0 96px; }
