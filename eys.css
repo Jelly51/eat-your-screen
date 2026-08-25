@@ -1,0 +1,185 @@
+.eys{
+  --paper:#efe6d2; --paper-2:#e8dec8; --ink:#15201f; --ink-2:#33403d;
+  --ink-3:rgba(21,32,31,0.54); --rule:rgba(21,32,31,0.20); --rule-2:rgba(21,32,31,0.10);
+  --red:#a8401f; --gold:#e6ae4d;
+  --fd:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --ft:'Newsreader',Georgia,'Times New Roman',serif;
+  background:var(--paper); color:var(--ink);
+  font-family:var(--ft); font-size:17px; line-height:1.62;
+  padding:0 0 8px; position:relative; overflow:hidden;
+  width:100vw; max-width:100vw; margin-left:calc(50% - 50vw);
+}
+.eys *{ box-sizing:border-box; }
+.eys a{ color:inherit; text-decoration:none; }
+.eys img{ max-width:100%; display:block; }
+.eys p{ margin:0; }
+.eys .w{ max-width:1180px; margin:0 auto; padding:0 40px; }
+.eys .grain{
+  position:absolute; inset:0; pointer-events:none; z-index:3; opacity:.045;
+  mix-blend-mode:multiply;
+  background-image:radial-gradient(circle,var(--ink) .6px,transparent .6px);
+  background-size:3px 3px;
+}
+
+/* ---- editorial label: letterspaced sans small caps, the FT standfirst move ---- */
+.eys .k{ font-family:var(--fd); font-stretch:100%; font-weight:600; font-size:11.5px;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--red);
+  padding-bottom:12px; margin:0 0 20px; border-bottom:1px solid var(--rule); display:block; }
+
+.eys .st{ font-family:var(--fd); font-stretch:125%; font-weight:800;
+  font-size:clamp(27px,3.9vw,46px); line-height:1.06; letter-spacing:-.015em; margin:0 0 18px; }
+.eys .ld{ font-family:var(--ft); font-size:clamp(17px,1.55vw,19.5px); line-height:1.55;
+  color:var(--ink-2); max-width:52ch; margin:0; }
+
+.eys .btn{ display:inline-block; padding:15px 26px; border-radius:0;
+  font-family:var(--fd); font-stretch:125%; font-weight:800; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase;
+  border:2px solid var(--ink); background:var(--ink); color:var(--paper);
+  transition:background .18s,color .18s; }
+.eys .btn:hover{ background:transparent; color:var(--ink); }
+.eys .btn-g{ background:transparent; color:var(--ink); }
+.eys .btn-g:hover{ background:var(--ink); color:var(--paper); }
+
+/* ---- hero ---- */
+/* masthead bar — broadsheet nameplate, not a sticky app header */
+.eys .nav{ border-bottom:1px solid var(--ink); }
+.eys .nav-top{ padding:20px 0 15px; border-bottom:1px solid var(--rule); }
+.eys .wm{ display:block; font-family:var(--fd); font-stretch:125%; font-weight:900;
+  font-size:15px; letter-spacing:.005em; text-transform:uppercase; line-height:1.2; }
+.eys .wm i{ display:block; font-family:var(--ft); font-style:italic; font-weight:400;
+  font-size:14px; letter-spacing:0; text-transform:none; color:var(--ink-3); margin-top:3px; }
+.eys .nl{ display:flex; gap:30px; flex-wrap:wrap; padding:13px 0; }
+.eys .nl a{ font-family:var(--fd); font-stretch:100%; font-weight:600; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+  padding-bottom:4px; border-bottom:2px solid transparent;
+  transition:color .18s,border-color .18s; }
+.eys .nl a:hover{ color:var(--ink); }
+.eys .nl a.on{ color:var(--ink); border-bottom-color:var(--ink); }
+@media (max-width:640px){
+  .eys .nav-top{ padding:16px 0 12px; }
+  .eys .nl{ gap:18px; }
+}
+
+.eys .hero{ padding:84px 0 96px; }
+.eys .hero-in{ display:grid; grid-template-columns:1.02fr .98fr; gap:64px; align-items:center; }
+.eys .ht{ font-family:var(--fd); font-stretch:125%; font-weight:900;
+  font-size:clamp(42px,7.4vw,96px); line-height:.94; letter-spacing:-.034em; margin:0 0 26px; }
+.eys .hp{ font-family:var(--ft); font-weight:400; font-style:italic;
+  font-size:clamp(19px,1.85vw,24px); line-height:1.32; color:var(--red);
+  max-width:26ch; margin:0 0 20px; }
+.eys .hs{ font-family:var(--ft); font-size:clamp(17px,1.5vw,19px); line-height:1.6;
+  color:var(--ink-2); max-width:44ch; margin:0 0 34px; }
+.eys .acts{ display:flex; gap:12px; flex-wrap:wrap; }
+
+/* ---- plate: a hairline rule, nothing else. the artwork carries it ---- */
+.eys .fr{ position:relative; border:1px solid var(--ink); background:var(--paper-2); }
+.eys .fr img{ width:100%; height:auto; }
+.eys .cap{ font-family:var(--ft); font-style:italic; font-size:14.5px; line-height:1.45;
+  color:var(--ink-3); margin:12px 2px 0; max-width:46ch; }
+
+/* broadsheet double rule: heavy over hairline */
+.eys .sec{ padding:104px 0; border-top:6px solid var(--ink); position:relative; }
+.eys .sec::before{ content:''; position:absolute; top:5px; left:0; right:0;
+  height:1px; background:var(--ink); }
+.eys .sh{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px;
+  align-items:end; margin-bottom:52px; }
+
+/* ---- book / featured chapter ---- */
+.eys .ch{ display:grid; grid-template-columns:.88fr 1.12fr; gap:56px; align-items:start; }
+.eys .cm{ display:flex; gap:16px; flex-wrap:wrap; align-items:baseline;
+  font-family:var(--fd); font-stretch:100%; font-weight:500; font-size:11px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);
+  padding-bottom:14px; margin-bottom:18px; border-bottom:1px solid var(--rule); }
+.eys .cm .t{ color:var(--red); font-weight:600; }
+.eys .ch h3{ font-family:var(--fd); font-stretch:125%; font-weight:800;
+  font-size:clamp(25px,3vw,37px); line-height:1.08; letter-spacing:-.015em; margin:0 0 18px; }
+.eys .ch p{ font-family:var(--ft); color:var(--ink-2); font-size:18px; line-height:1.66; margin:0 0 18px; }
+.eys .ch .drop{ font-size:19.5px; color:var(--ink); }
+
+/* ---- audio: a rule-bound strip, not a pill ---- */
+.eys .aud{ display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  padding:12px 0; margin:0 0 22px; max-width:500px; }
+.eys .aud-l{ font-family:var(--fd); font-stretch:100%; font-weight:600; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--red); white-space:nowrap; }
+.eys .aud audio{ flex:1; min-width:190px; height:32px;
+  filter:grayscale(1) contrast(1.06) opacity(.82); }
+.eys .aud-soon{ flex:1; min-width:190px; font-family:var(--ft); font-style:italic;
+  font-size:15.5px; line-height:1.4; color:var(--ink-3); }
+
+/* ---- gate ---- */
+.eys .gate{ position:relative; }
+.eys .gf{ max-height:172px; max-width:500px; overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 22%,transparent 94%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 22%,transparent 94%); }
+.eys .gc{ position:relative; margin-top:-40px; background:var(--paper);
+  border-top:2px solid var(--ink); padding:22px 0 0; max-width:500px; }
+.eys .gc h4{ font-family:var(--fd); font-stretch:125%; font-weight:800;
+  font-size:18px; letter-spacing:-.01em; margin:0 0 6px; }
+.eys .gc p{ font-family:var(--ft); font-size:16px; line-height:1.5; margin:0 0 16px; color:var(--ink-2); }
+.eys .slot-form{ border:1px dashed var(--red); padding:12px 18px;
+  font-family:var(--fd); font-stretch:100%; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--red); text-align:center; }
+
+/* ---- contents: a broadsheet index ---- */
+.eys .toc{ margin-top:84px; border-top:6px solid var(--ink); position:relative; }
+.eys .toc::before{ content:''; position:absolute; top:5px; left:0; right:0;
+  height:1px; background:var(--ink); }
+.eys .row{ display:grid; grid-template-columns:52px 1fr auto; gap:26px;
+  align-items:baseline; padding:26px 0; border-bottom:1px solid var(--rule-2);
+  transition:padding-left .18s; }
+.eys .row:hover{ padding-left:8px; }
+.eys .rn{ font-family:var(--fd); font-stretch:100%; font-weight:600; font-size:11.5px;
+  letter-spacing:.1em; color:var(--red); }
+.eys .rt{ font-family:var(--fd); font-stretch:125%; font-weight:700;
+  font-size:19.5px; line-height:1.2; letter-spacing:-.01em; margin:0 0 7px; }
+.eys .rd{ font-family:var(--ft); color:var(--ink-2); font-size:16px; line-height:1.5;
+  margin:0; max-width:62ch; }
+.eys .rs{ font-family:var(--fd); font-stretch:100%; font-weight:500; font-size:10.5px;
+  letter-spacing:.16em; color:var(--ink-3); text-transform:uppercase; white-space:nowrap; }
+.eys .row.pend .rt,.eys .row.pend .rd{ color:var(--ink-3); }
+.eys .row.pend .rt{ font-style:italic; font-family:var(--ft); font-weight:400; font-size:20px; }
+
+/* ---- the dispatch, set dark: one change of key in the whole page ---- */
+.eys .dark{ background:var(--ink); color:var(--paper); padding:104px 0; }
+.eys .dark .k{ color:var(--gold); border-bottom-color:rgba(239,230,210,.24); }
+.eys .dark .ld{ color:rgba(239,230,210,.78); }
+.eys .dg{ display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+  border-top:1px solid rgba(239,230,210,.24); margin-top:44px; }
+.eys .sl{ padding:28px 22px 34px; border-right:1px solid rgba(239,230,210,.14); }
+.eys .sl:last-child{ border-right:0; }
+.eys .sn{ font-family:var(--fd); font-stretch:100%; font-weight:600; font-size:10.5px;
+  letter-spacing:.16em; color:var(--gold); }
+.eys .sl h4{ font-family:var(--fd); font-stretch:125%; font-weight:800;
+  font-size:16.5px; line-height:1.15; margin:14px 0 9px; }
+.eys .sl p{ font-family:var(--ft); font-size:15.5px; line-height:1.5;
+  color:rgba(239,230,210,.68); margin:0; }
+.eys .signoff{ font-family:var(--ft); font-style:italic; font-weight:300;
+  font-size:clamp(21px,2.4vw,30px); line-height:1.34; color:var(--gold);
+  text-align:center; max-width:26ch; margin:56px auto 0; }
+
+/* ---- forthcoming: a ruled standfirst, no hazard tape ---- */
+.eys .soon{ border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+  padding:36px 0; }
+.eys .si{ display:flex; align-items:baseline; gap:28px; flex-wrap:wrap; }
+.eys .sb{ font-family:var(--fd); font-stretch:100%; font-weight:600; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--red); white-space:nowrap; }
+.eys .sc{ flex:1; min-width:260px; font-family:var(--ft); color:var(--ink-2);
+  font-size:17px; line-height:1.55; }
+
+@media (max-width:960px){
+  .eys .hero-in{ grid-template-columns:1fr; gap:44px; }
+  .eys .sh{ grid-template-columns:1fr; gap:26px; align-items:start; }
+  .eys .ch{ grid-template-columns:1fr; gap:36px; }
+  .eys .dg{ grid-template-columns:repeat(2,1fr); }
+  .eys .sl{ border-bottom:1px solid rgba(239,230,210,.14); }
+  .eys .signoff{ margin-top:40px; }
+}
+@media (max-width:640px){
+  .eys .w{ padding:0 22px; }
+  .eys .sec,.eys .dark{ padding:72px 0; }
+  .eys .dg{ grid-template-columns:1fr; }
+  .eys .sl{ border-right:0; }
+  .eys .row{ grid-template-columns:38px 1fr; }
+  .eys .rs{ grid-column:2; }
+}
