@@ -1,7 +1,7 @@
 .eys{
   --paper:#efe6d2; --paper-2:#e8dec8; --ink:#15201f; --ink-2:#33403d;
   --ink-3:rgba(21,32,31,0.54); --rule:rgba(21,32,31,0.20); --rule-2:rgba(21,32,31,0.10);
-  --red:#a8401f; --gold:#e6ae4d;
+  --red:#a8401f; --gold:#e6ae4d; --live:#2fb9ea;
   --fd:'Archivo','Helvetica Neue',Arial,sans-serif;
   --ft:'Newsreader',Georgia,'Times New Roman',serif;
   background:var(--paper); color:var(--ink);
@@ -102,7 +102,17 @@
   font-family:var(--fd); font-stretch:100%; font-weight:500; font-size:11px;
   letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);
   padding-bottom:14px; margin-bottom:18px; border-bottom:1px solid var(--rule); }
-.eys .cm .t{ color:var(--red); font-weight:600; }
+.eys .cm .t{ color:var(--red); font-weight:600; display:inline-flex; align-items:center; gap:8px; }
+/* live marker — the cyan from the illustrations, used only where it means "now" */
+.eys .cm .t::before{ content:''; width:7px; height:7px; border-radius:50%;
+  background:var(--live); flex:0 0 auto;
+  box-shadow:0 0 0 0 rgba(47,185,234,.55); animation:eyspulse 2.4s ease-out infinite; }
+@keyframes eyspulse{
+  0%{ box-shadow:0 0 0 0 rgba(47,185,234,.55); }
+  70%{ box-shadow:0 0 0 7px rgba(47,185,234,0); }
+  100%{ box-shadow:0 0 0 0 rgba(47,185,234,0); }
+}
+@media (prefers-reduced-motion:reduce){ .eys .cm .t::before{ animation:none; } }
 .eys .ch h3{ font-family:var(--fd); font-stretch:125%; font-weight:800;
   font-size:clamp(25px,3vw,37px); line-height:1.08; letter-spacing:-.015em; margin:0 0 18px; }
 .eys .ch p{ font-family:var(--ft); color:var(--ink-2); font-size:18px; line-height:1.66; margin:0 0 18px; }
@@ -118,6 +128,7 @@
   filter:grayscale(1) contrast(1.06) opacity(.82); }
 .eys .aud-soon{ flex:1; min-width:190px; font-family:var(--ft); font-style:italic;
   font-size:15.5px; line-height:1.4; color:var(--ink-3); }
+
 
 /* ---- gate ---- */
 .eys .gate{ position:relative; }
