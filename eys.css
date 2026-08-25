@@ -84,8 +84,22 @@
   letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3); margin:20px 0 0; }
 
 /* ---- plate: a hairline rule, nothing else. the artwork carries it ---- */
-.eys .fr{ position:relative; border:1px solid var(--ink); background:var(--paper-2); }
+.eys .fr{ position:relative; border:1px solid var(--ink); background:var(--paper-2);
+  overflow:hidden; }
 .eys .fr img{ width:100%; height:auto; }
+/* the machine looks back — one sweep on hover, never ambient */
+.eys .fr::after{ content:''; position:absolute; left:0; right:0; height:45%;
+  top:-45%; pointer-events:none; opacity:0;
+  background:linear-gradient(180deg,transparent,rgba(47,185,234,.42) 45%,transparent); }
+.eys .fr:hover::after{ animation:eysscan 1.4s cubic-bezier(.4,0,.5,1) forwards; }
+@keyframes eysscan{
+  0%{ top:-45%; opacity:0; }
+  12%{ opacity:1; }
+  88%{ opacity:1; }
+  100%{ top:100%; opacity:0; }
+}
+@media (prefers-reduced-motion:reduce){ .eys .fr:hover::after{ animation:none; } }
+@media (hover:none){ .eys .fr::after{ display:none; } }
 .eys .cap{ font-family:var(--ft); font-style:italic; font-size:14.5px; line-height:1.45;
   color:var(--ink-3); margin:12px 2px 0; max-width:46ch; }
 
