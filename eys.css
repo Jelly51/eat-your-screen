@@ -44,6 +44,8 @@
 /* masthead bar — broadsheet nameplate, not a sticky app header */
 .eys .nav{ border-bottom:1px solid var(--ink); }
 .eys .nav-top{ padding:20px 0 15px; border-bottom:1px solid var(--rule); }
+.eys .wm-row{ display:flex; align-items:center; gap:15px; }
+.eys .mark img{ height:38px; width:auto; display:block; }
 .eys .wm{ display:block; font-family:var(--fd); font-stretch:125%; font-weight:900;
   font-size:15px; letter-spacing:.005em; text-transform:uppercase; line-height:1.2; }
 .eys .wm i{ display:block; font-family:var(--ft); font-style:italic; font-weight:400;
