@@ -167,7 +167,8 @@
   align-items:baseline; padding:26px 0; border-bottom:1px solid var(--rule-2);
   transition:padding-left .18s; }
 .eys .row:hover{ padding-left:8px; }
-.eys a.row{ text-decoration:none; grid-template-columns:118px 58px 1fr auto; }
+.eys a.row{ text-decoration:none; grid-template-columns:118px 58px 1fr auto;
+  align-items:start; }
 /* index thumbnails — drawn in CSS, one line per article, no markup needed */
 .eys a.row::before{ content:''; display:block; width:118px; height:80px;
   border:1px solid var(--ink);
@@ -175,9 +176,12 @@
 .eys a.row[href*="what-are-we-still-calling"]::before{
   background-image:url("https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80,width=300/uploads/asset/file/c1f6fce3-177d-4eaf-b43b-f9974a0f8ea0/Eat_Your_Screen_Restaurant_Scene_1.png?t=1787684323"); }
 @media (max-width:640px){
-  .eys a.row{ grid-template-columns:76px 1fr; gap:16px; }
-  .eys a.row::before{ width:76px; height:54px; }
+  .eys a.row{ grid-template-columns:80px 1fr; gap:14px; }
+  .eys a.row::before{ width:80px; height:54px; }
   .eys a.row .rn{ display:none; }
+  .eys a.row .rt{ font-size:19px; line-height:1.22; }
+  .eys a.row .rd{ font-size:15px; }
+  .eys a.row .rs{ margin-top:2px; }
 }
 .eys a.row:hover .rt{ color:var(--red); }
 .eys a.row .rs{ color:var(--red); }
