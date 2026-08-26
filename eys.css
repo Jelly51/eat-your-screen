@@ -264,3 +264,12 @@
   .eys .row{ grid-template-columns:38px 1fr; }
   .eys .rs{ grid-column:2; }
 }
+
+/* beehiiv cookie banner: it is already a small bottom-left card at >=640px,
+   but full-width across the masthead below that. Move it to the foot on phones.
+   Buttons are untouched - Accept/Customize/Decline stay equal weight. */
+@media (max-width:639px){
+  div[class*="left-2"][class*="right-2"][class*="top-2"][class*="z-50"]{
+    top:auto !important; bottom:8px !important;
+  }
+}
