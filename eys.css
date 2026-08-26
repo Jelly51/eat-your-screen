@@ -280,3 +280,10 @@
    is deleted in the builder, not here. Hiding it in CSS made it impossible
    to select and delete in the builder, so it is deliberately not hidden. */
 .eys{ margin-top:-40px; margin-bottom:-40px; }
+
+/* beehiiv renders a 56px white bar with a duplicate copyright line as a direct
+   child of <body>, outside the builder's page tree - which is why the Footer
+   editor cannot select or delete it. Our own footer already carries the
+   copyright. Targeted structurally rather than by beehiiv's hashed class so it
+   survives their deploys; if they restructure, the bar simply reappears. */
+body > div._5cga7e0 + div{ display:none !important; }
