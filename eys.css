@@ -273,3 +273,13 @@
     top:auto !important; bottom:8px !important;
   }
 }
+
+/* White strip above the page. beehiiv wraps every builder section in its own
+   div and pads it 40px top and bottom, and there is an empty leftover section
+   sitting above ours contributing another 80px. Cancel the padding around the
+   block, and hide that empty section - the :not(:has(...)) guard means it
+   comes straight back if the section is ever given real content. */
+div:has(+ div .eys) > section:not(:has(img,h1,h2,h3,h4,p,a,button,form,iframe,video)){
+  display:none !important;
+}
+.eys{ margin-top:-40px; margin-bottom:-40px; }
