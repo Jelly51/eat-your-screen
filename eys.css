@@ -146,6 +146,19 @@
 
 /* ---- gate ---- */
 .eys .gate{ position:relative; }
+/* Chapter 01 is given away, not gated - the opening reads in full and the ask
+   sits below it as an invitation rather than a wall. */
+.eys .opening{ max-width:500px; }
+.eys .opening p{ font-family:var(--ft); font-size:17px; line-height:1.62;
+  margin:0 0 14px; color:var(--ink-2); }
+.eys .ask{ margin-top:26px; border-top:2px solid var(--ink);
+  padding:22px 0 0; max-width:500px; }
+.eys .ask h4{ font-family:var(--fd); font-stretch:125%; font-weight:800;
+  font-size:18px; letter-spacing:-.01em; margin:0 0 6px; color:var(--ink); }
+.eys .ask p{ font-family:var(--ft); font-size:16px; line-height:1.5;
+  margin:0 0 16px; color:var(--ink-2); }
+.eys .toc-note{ font-family:var(--ft); font-size:16px; line-height:1.5;
+  color:var(--ink-3); margin:0 0 6px; max-width:52ch; }
 .eys .gf{ max-height:172px; max-width:500px; overflow:hidden;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 22%,transparent 94%);
   mask-image:linear-gradient(180deg,#000 0%,#000 22%,transparent 94%); }
@@ -287,3 +300,11 @@
    copyright. Targeted structurally rather than by beehiiv's hashed class so it
    survives their deploys; if they restructure, the bar simply reappears. */
 body > div._5cga7e0 + div{ display:none !important; }
+
+/* beehiiv rejects iframed subscribe forms inside a custom HTML block, so the
+   block is split in two with beehiiv's own Subscribe element between them.
+   Each half cancels only the section padding on its own outer edge. */
+.eys-a{ margin-bottom:0 !important; }
+.eys-b{ margin-top:0 !important; }
+.eys .sub-note{ font-family:var(--fd); font-size:11px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin:0; }
