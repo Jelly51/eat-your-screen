@@ -434,41 +434,123 @@ body > div._5cga7e0 + div{ display:none !important; }
 [class*="_1lgh8461"]{ background:transparent !important;
   border:1px solid #15201f !important; }
 
-/* ---- SUBSCRIBE PAGE LAYOUT --------------------------------------------
-   Scoped to the only page carrying a subscribe form. beehiiv centres every
-   block by default, which is fine for a headline and unreadable for six
-   lines of prose - the eye loses the left edge on each line. Left-aligned,
-   width-limited, and given room to breathe. */
-body:has(form input[type="email"]) [data-type="paragraph"],
-body:has(form input[type="email"]) h1,
-body:has(form input[type="email"]) h2,
-body:has(form input[type="email"]) h3,
-body:has(form input[type="email"]) h4,
-body:has(form input[type="email"]) ul,
-body:has(form input[type="email"]) ol{
-  text-align:left !important;
-  margin-left:0 !important;
-  margin-right:auto !important;
-  max-width:58ch;
+/* ---- SUBSCRIBE PAGE ---------------------------------------------------
+   beehiiv's own blocks, restyled to the homepage's index grammar.
+   Scoped to the SECTION holding the form so it cannot leak to other pages.
+
+   WHY THE HEADING LOOKED WRONG: eys.css had never styled beehiiv's native
+   blocks, so this page rendered in beehiiv's theme font while the homepage
+   rendered in Archivo. Two different typefaces on one site.
+   font-stretch:125% itself is fine — measured on the homepage masthead,
+   430px actual === 430px at wdth 125. The font-variation-settings line is
+   belt-and-braces on the same axis; keep both.
+
+   beehiiv wraps heading text in <strong> and puts an inline font-family on
+   inner <span>s, so every type rule has to name span and strong too.
+   ---------------------------------------------------------------------- */
+
+section:has(form input[type="email"]){
+  --e-ink:#15201f; --e-ink2:#33403d; --e-ink3:rgba(21,32,31,.54);
+  --e-rule:rgba(21,32,31,.20); --e-red:#a8401f;
+  --e-fd:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --e-ft:'Newsreader',Georgia,'Times New Roman',serif;
 }
-body:has(form input[type="email"]) h2{ max-width:16ch; margin-bottom:18px !important; }
-body:has(form input[type="email"]) h4{ margin-top:46px !important; margin-bottom:14px !important; }
-body:has(form input[type="email"]) [data-type="paragraph"]{ margin-bottom:16px !important; }
 
-/* the two proof lines: rust diamonds, not floating bullets */
-body:has(form input[type="email"]) ul{ list-style:none !important;
-  padding-left:0 !important; margin-top:22px !important; }
-body:has(form input[type="email"]) ul li{ position:relative; padding-left:20px;
-  margin-bottom:8px; font-size:.9em; }
-body:has(form input[type="email"]) ul li::before{ content:''; position:absolute;
-  left:0; top:.55em; width:7px; height:7px; background:#a8401f;
-  transform:rotate(45deg); }
+/* left-aligned block by block — never on the form controls */
+section:has(form input[type="email"]) :is(h2,h3,h4,p,ul,ol,li,hr){
+  --text-align:left !important; --mobile-text-align:left !important;
+  text-align:left !important;
+}
 
-/* the rule earns its space */
-body:has(form input[type="email"]) hr,
-body:has(form input[type="email"]) [data-type="horizontalRule"]{
-  max-width:58ch; margin:40px auto 34px 0 !important;
-  border:0 !important; border-top:1px solid rgba(21,32,31,.22) !important; }
+/* display type */
+section:has(form input[type="email"]) :is(h2,h3),
+section:has(form input[type="email"]) :is(h2,h3) span,
+section:has(form input[type="email"]) :is(h2,h3) strong{
+  font-family:var(--e-fd) !important;
+  font-stretch:125%; font-variation-settings:'wdth' 125,'wght' 800 !important;
+  font-weight:800 !important; letter-spacing:-.015em !important; line-height:1.06;
+}
+section:has(form input[type="email"]) h2{ max-width:18ch; }
 
-/* form sits with the text, not adrift in the middle */
-body:has(form input[type="email"]) form{ max-width:520px; margin-left:0 !important; }
+/* body type — beats beehiiv's inline Inter */
+section:has(form input[type="email"]) :is(p,li),
+section:has(form input[type="email"]) :is(p,li) span{
+  font-family:var(--e-ft) !important; color:var(--e-ink2);
+}
+section:has(form input[type="email"]) p{ max-width:60ch; }
+
+/* the two proof lines under the form */
+section:has(form input[type="email"]) ul{
+  list-style:none !important; padding:14px 0; margin:26px 0 4px;
+  border-top:1px solid var(--e-rule); border-bottom:1px solid var(--e-rule);
+  max-width:60ch;
+}
+section:has(form input[type="email"]) ul li{ margin:0 0 6px; padding-left:0; }
+section:has(form input[type="email"]) ul li:last-child{ margin-bottom:0; }
+section:has(form input[type="email"]) ul li::marker,
+section:has(form input[type="email"]) ul li::before{ content:none !important; display:none !important; }
+section:has(form input[type="email"]) ul li span{
+  font-family:var(--e-fd) !important;
+  font-variation-settings:'wdth' 100,'wght' 600 !important;
+  font-size:11.5px !important; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--e-ink3) !important;
+}
+
+/* "What arrives" becomes the editorial label, same device as the homepage */
+section:has(form input[type="email"]) h4,
+section:has(form input[type="email"]) h4 span,
+section:has(form input[type="email"]) h4 strong{
+  font-family:var(--e-fd) !important;
+  font-variation-settings:'wdth' 100,'wght' 600 !important;
+  font-size:11.5px !important; --font-size:11.5px; --mobile-font-size:11.5px;
+  letter-spacing:.2em !important; text-transform:uppercase !important;
+  color:var(--e-red) !important; line-height:1.4 !important;
+}
+section:has(form input[type="email"]) h4{ margin:44px 0 6px !important; }
+
+/* ---- the five strands, set as a numbered menu ----
+   They are one paragraph of <span>s separated by <br>. Each span becomes a
+   row; a CSS counter supplies 01-05, so no markup and no re-typing.
+   The sixth span is a statement, not a course — no number, no rule above. */
+section:has(form input[type="email"]) h4 + p{ counter-reset:strand; margin:0; max-width:none; }
+section:has(form input[type="email"]) h4 + p br{ display:none; }
+
+section:has(form input[type="email"]) h4 + p > span:nth-of-type(-n+5){
+  display:grid; grid-template-columns:38px 1fr; gap:0 16px;
+  padding:15px 0; border-top:1px solid var(--e-rule);
+}
+section:has(form input[type="email"]) h4 + p > span:nth-of-type(-n+5)::before{
+  counter-increment:strand; content:counter(strand,decimal-leading-zero);
+  font-family:var(--e-fd);
+  font-variation-settings:'wdth' 100,'wght' 600;
+  font-size:11.5px; letter-spacing:.16em; color:var(--e-red); padding-top:.45em;
+}
+section:has(form input[type="email"]) h4 + p > span:nth-of-type(-n+5) span{
+  font-size:17px !important; line-height:1.5; color:var(--e-ink) !important;
+}
+/* bolding a strand name in the editor promotes it to a tracked label */
+section:has(form input[type="email"]) h4 + p strong{
+  font-family:var(--e-fd) !important;
+  font-variation-settings:'wdth' 100,'wght' 700 !important;
+  font-size:12px !important; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--e-ink) !important;
+}
+section:has(form input[type="email"]) h4 + p > span:nth-of-type(n+6){
+  display:block; border-top:1px solid var(--e-rule);
+  margin-top:2px; padding-top:18px;
+}
+section:has(form input[type="email"]) h4 + p > span:nth-of-type(n+6) span{
+  font-style:italic; font-size:16px !important; color:var(--e-ink3) !important;
+}
+
+/* divider, then the closing promise set quieter */
+section:has(form input[type="email"]) hr{
+  max-width:60ch; margin:42px 0 26px !important;
+  border:0 !important; border-top:1px solid var(--e-rule) !important;
+}
+section:has(form input[type="email"]) hr ~ p span{
+  font-size:15px !important; line-height:1.7; color:var(--e-ink3) !important;
+}
+
+/* form sits with the text, not adrift */
+section:has(form input[type="email"]) form{ max-width:520px; margin-left:0 !important; }
