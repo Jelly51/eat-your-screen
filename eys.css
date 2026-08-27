@@ -408,3 +408,17 @@ body > div._5cga7e0 + div{ display:none !important; }
 .eys .promise p:last-child{ margin:0; }
 .eys .promise b{ color:var(--ink); font-weight:600; }
 @media (max-width:640px){ .eys .sub-lede{ font-size:17px; } }
+
+/* Dense Discovery's two proof lines under the form. "Next dispatch" works at
+   any list size; the credential stands in for a subscriber count we do not have. */
+.eys .proof{ list-style:none; margin:0 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:8px; }
+.eys .proof li{ font-family:var(--fd); font-stretch:100%; font-size:12px;
+  font-weight:500; letter-spacing:.02em; color:var(--ink-3);
+  padding-left:20px; position:relative; line-height:1.5; }
+.eys .proof li::before{ content:''; position:absolute; left:0; top:6px;
+  width:7px; height:7px; background:var(--red); transform:rotate(45deg); }
+.eys .proof b{ color:var(--ink); font-weight:700; }
+.eys .gets-note{ font-family:var(--ft); font-size:15px; line-height:1.5;
+  color:var(--ink-3); margin:22px 0 0; padding-top:16px;
+  border-top:1px solid var(--rule-2); max-width:56ch; }
