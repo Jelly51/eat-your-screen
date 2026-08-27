@@ -433,3 +433,42 @@ body > div._5cga7e0 + div{ display:none !important; }
 [class*="_1lgh846"] button{ border-radius:0 !important; }
 [class*="_1lgh8461"]{ background:transparent !important;
   border:1px solid #15201f !important; }
+
+/* ---- SUBSCRIBE PAGE LAYOUT --------------------------------------------
+   Scoped to the only page carrying a subscribe form. beehiiv centres every
+   block by default, which is fine for a headline and unreadable for six
+   lines of prose - the eye loses the left edge on each line. Left-aligned,
+   width-limited, and given room to breathe. */
+body:has(form input[type="email"]) [data-type="paragraph"],
+body:has(form input[type="email"]) h1,
+body:has(form input[type="email"]) h2,
+body:has(form input[type="email"]) h3,
+body:has(form input[type="email"]) h4,
+body:has(form input[type="email"]) ul,
+body:has(form input[type="email"]) ol{
+  text-align:left !important;
+  margin-left:0 !important;
+  margin-right:auto !important;
+  max-width:58ch;
+}
+body:has(form input[type="email"]) h2{ max-width:16ch; margin-bottom:18px !important; }
+body:has(form input[type="email"]) h4{ margin-top:46px !important; margin-bottom:14px !important; }
+body:has(form input[type="email"]) [data-type="paragraph"]{ margin-bottom:16px !important; }
+
+/* the two proof lines: rust diamonds, not floating bullets */
+body:has(form input[type="email"]) ul{ list-style:none !important;
+  padding-left:0 !important; margin-top:22px !important; }
+body:has(form input[type="email"]) ul li{ position:relative; padding-left:20px;
+  margin-bottom:8px; font-size:.9em; }
+body:has(form input[type="email"]) ul li::before{ content:''; position:absolute;
+  left:0; top:.55em; width:7px; height:7px; background:#a8401f;
+  transform:rotate(45deg); }
+
+/* the rule earns its space */
+body:has(form input[type="email"]) hr,
+body:has(form input[type="email"]) [data-type="horizontalRule"]{
+  max-width:58ch; margin:40px auto 34px 0 !important;
+  border:0 !important; border-top:1px solid rgba(21,32,31,.22) !important; }
+
+/* form sits with the text, not adrift in the middle */
+body:has(form input[type="email"]) form{ max-width:520px; margin-left:0 !important; }
