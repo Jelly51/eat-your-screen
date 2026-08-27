@@ -156,7 +156,11 @@
 .eys .ask h4{ font-family:var(--fd); font-stretch:125%; font-weight:800;
   font-size:18px; letter-spacing:-.01em; margin:0 0 6px; color:var(--ink); }
 .eys .ask p{ font-family:var(--ft); font-size:16px; line-height:1.5;
-  margin:0 0 16px; color:var(--ink-2); }
+  margin:0 0 18px; color:var(--ink-2); }
+/* .ask p would otherwise out-specify .sub-note and blow it up to 16px */
+.eys .ask p.sub-note{ font-family:var(--fd); font-size:11px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+  margin:16px 0 0; line-height:1.5; }
 .eys .toc-note{ font-family:var(--ft); font-size:16px; line-height:1.5;
   color:var(--ink-3); margin:0 0 6px; max-width:52ch; }
 .eys .gf{ max-height:172px; max-width:500px; overflow:hidden;
