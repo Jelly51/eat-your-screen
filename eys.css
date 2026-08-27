@@ -312,3 +312,57 @@ body > div._5cga7e0 + div{ display:none !important; }
 .eys-b{ margin-top:0 !important; }
 .eys .sub-note{ font-family:var(--fd); font-size:11px; font-weight:600;
   letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin:0; }
+
+/* ---- About page: a signed letter, not a manifesto ---------------------- */
+.eys .about{ padding:0 0 40px; }
+.eys .ab-lead{ margin:0 0 34px; }
+.eys .ab-portrait{ width:100%; max-width:420px; aspect-ratio:2/3;
+  border:1px solid var(--ink); background:var(--paper-2); display:block;
+  object-fit:cover; }
+.eys .ph{ display:flex; align-items:center; justify-content:center;
+  text-align:center; font-family:var(--fd); font-stretch:100%; font-size:11px;
+  font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); padding:20px; line-height:1.8; }
+.eys .ab-cap{ font-family:var(--ft); font-style:italic; font-size:14px;
+  color:var(--ink-3); margin:10px 0 0; max-width:420px; }
+.eys .ab-h{ font-family:var(--fd); font-stretch:125%; font-weight:800;
+  font-size:clamp(30px,5.2vw,50px); line-height:1.04; letter-spacing:-.02em;
+  color:var(--ink); margin:0 0 18px; max-width:16ch; }
+.eys .ab-by{ font-family:var(--fd); font-stretch:100%; font-size:11px;
+  font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 34px; }
+.eys .ab-body{ max-width:64ch; }
+.eys .ab-body p{ font-family:var(--ft); font-size:18px; line-height:1.62;
+  margin:0 0 20px; color:var(--ink-2); }
+.eys .ab-body p.first::first-letter{ font-family:var(--fd); font-stretch:125%;
+  font-weight:800; font-size:3.1em; line-height:.82; float:left;
+  margin:6px 10px 0 0; color:var(--ink); }
+.eys .ab-pull{ font-family:var(--fd); font-stretch:125%; font-weight:700;
+  font-size:clamp(19px,2.9vw,26px); line-height:1.22; color:var(--ink);
+  border-top:2px solid var(--ink); border-bottom:1px solid var(--ink);
+  padding:22px 0; margin:30px 0; max-width:24ch; }
+.eys .contract{ border-top:1px solid var(--rule); margin:38px 0 0;
+  padding:26px 0 0; max-width:64ch; }
+.eys .contract h4{ font-family:var(--fd); font-stretch:100%; font-size:11px;
+  font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--red); margin:0 0 16px; }
+.eys .contract ul{ list-style:none; margin:0; padding:0; }
+.eys .contract li{ font-family:var(--ft); font-size:16px; line-height:1.5;
+  color:var(--ink-2); padding:0 0 12px 22px; position:relative; }
+.eys .contract li::before{ content:'\2014'; position:absolute; left:0;
+  color:var(--ink-3); }
+.eys .sig-wrap{ margin:40px 0 0; }
+.eys .ab-sig{ display:block; width:200px; height:74px; border:1px dashed var(--rule);
+  background:transparent; }
+.eys .sig-name{ font-family:var(--fd); font-stretch:100%; font-size:11px;
+  font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); margin:12px 0 0; }
+@media (min-width:860px){
+  .eys .ab-lead{ display:grid; grid-template-columns:420px 1fr; gap:48px;
+    align-items:end; }
+  .eys .ab-htext{ padding-bottom:6px; }
+}
+@media (max-width:640px){
+  .eys .ab-body p{ font-size:17px; }
+  .eys .ab-portrait{ max-width:100%; }
+}
