@@ -422,3 +422,14 @@ body > div._5cga7e0 + div{ display:none !important; }
 .eys .gets-note{ font-family:var(--ft); font-size:15px; line-height:1.5;
   color:var(--ink-3); margin:22px 0 0; padding-top:16px;
   border-top:1px solid var(--rule-2); max-width:56ch; }
+
+/* beehiiv's subscribe form bakes a 6px radius and a grey wash into its own
+   component classes (_1lgh846*), which the builder's Styles panel does not
+   expose - the Radius field there governs the outer container only. Overridden
+   here. If beehiiv rehashes these class names the corners simply return, which
+   is visible rather than silent. */
+[class*="_1lgh846"]{ border-radius:0 !important; }
+[class*="_1lgh846"] input{ border-radius:0 !important; }
+[class*="_1lgh846"] button{ border-radius:0 !important; }
+[class*="_1lgh8461"]{ background:transparent !important;
+  border:1px solid #15201f !important; }
