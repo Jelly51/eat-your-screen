@@ -190,6 +190,8 @@
 .eys a.row::before{ content:''; display:block; width:118px; height:80px;
   border:1px solid var(--ink);
   background:var(--paper-2) center/cover no-repeat; }
+.eys a.row[href*="what-happened-to-the-meal-kit"]::before{
+  background-image:url("https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80,width=300/uploads/asset/file/50b1bad2-7fa5-4290-99f1-dd1739690a84/meal-kit-revolution.jpg?t=1787932354"); }
 .eys a.row[href*="what-are-we-still-calling"]::before{
   background-image:url("https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80,width=300/uploads/asset/file/c1f6fce3-177d-4eaf-b43b-f9974a0f8ea0/Eat_Your_Screen_Restaurant_Scene_1.png?t=1787684323"); }
 @media (max-width:640px){
