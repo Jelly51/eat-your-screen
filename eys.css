@@ -424,6 +424,15 @@ body > div._5cga7e0 + div{ display:none !important; }
   font-size:clamp(19px,2.9vw,26px); line-height:1.22; color:var(--ink);
   border-top:2px solid var(--ink); border-bottom:1px solid var(--ink);
   padding:22px 0; margin:30px 0; max-width:24ch; }
+/* manifesto variant — the About page's pull-quote is 24ch, sized for one
+   short line. The manifesto's are full sentences, so they need the column. */
+.eys .sec.about.mf .ab-h{ max-width:24ch; }
+.eys .sec.about.mf .ab-pull{ max-width:none; font-stretch:125%;
+  font-size:clamp(20px,2.3vw,28px); line-height:1.26; padding:26px 0;
+  margin:38px 0; }
+.eys .sec.about.mf .ab-body{ max-width:64ch; }
+.eys .sec.about.mf .contract{ max-width:64ch; }
+
 .eys .contract{ border-top:1px solid var(--rule); margin:38px 0 0;
   padding:26px 0 0; max-width:64ch; }
 .eys .contract h4{ font-family:var(--fd); font-stretch:100%; font-size:11px;
