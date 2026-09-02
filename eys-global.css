@@ -1,0 +1,54 @@
+/* ==========================================================================
+   eys-global.css — Eat Your Screen
+
+   Injected into <head> on EVERY page by the publication's Global header
+   script. That is the ONLY way to reach post, archive, tag and author
+   pages: they never load eys.css, which is linked from inside our custom
+   HTML blocks and therefore only exists on pages that have one.
+
+   KEEP THIS FILE SMALL AND GLOBAL-SAFE. It lands on every page including
+   beehiiv's own chrome. Nothing here may assume .eys is present, and
+   nothing page-specific belongs in it — that goes in eys.css.
+
+   Created 2 Sep 2026 after the accessibility audit found 0 of 14
+   focusable elements had any visible focus state.
+   ========================================================================== */
+
+/* --- WCAG 2.4.7 Focus Visible -------------------------------------------
+   Keyboard and assistive navigation only. Mouse users see no change. */
+
+:focus-visible{
+  outline:2px solid #2fb9ea;
+  outline-offset:3px;
+  border-radius:1px;
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid #2fb9ea;
+  outline-offset:3px;
+}
+/* cyan on ink is itself low contrast — use cream on dark grounds */
+.eys .dark a:focus-visible,
+.eys .dark button:focus-visible,
+.eys .dark summary:focus-visible{
+  outline-color:#efe6d2;
+}
+/* restyle the indicator, never remove it */
+:focus:not(:focus-visible){ outline:none; }
+
+/* --- Reading measure on post pages ---------------------------------------
+   Audit measured article body at 770px ≈ 95 characters per line. The
+   readable measure is 60–75. Text only: images, figures and embeds keep
+   the full column width. */
+
+.rendered-post p,
+.rendered-post ul,
+.rendered-post ol,
+.rendered-post blockquote{
+  max-width:68ch;
+}
