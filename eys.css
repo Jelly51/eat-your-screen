@@ -381,6 +381,30 @@
    to select and delete in the builder, so it is deliberately not hidden. */
 .eys{ margin-top:-40px; margin-bottom:-40px; }
 
+/* beehiiv's viewport-height section. 2 Sep 2026.
+   The homepage masthead was being sliced across the top: mark cropped,
+   wordmark gone, Subscribe cut through. Cause is the section beehiiv
+   wraps each block in, which carries
+       data-is-viewport-height="true"   -> height:100dvh
+       data-inner-vertical-align="align_center"
+   Our blocks are several thousand pixels tall, so centring them inside
+   a viewport-height box throws the top half upward and out of view.
+   Reproduced in a harness at -2421px, fixed at +23px, 2 Sep 2026.
+   This lives here rather than in the block because /reading carries the
+   identical section setting with a different class (.shelf), so a
+   block-local fix would have repaired the homepage and left Reading
+   broken. Structural selectors, so beehiiv renaming their generated
+   classes will not break it. */
+div[data-type="section"]:has(.eys),
+div[data-type="section"]:has(.shelf){
+  height:auto !important; min-height:0 !important;
+  align-items:flex-start !important; justify-content:flex-start !important;
+}
+div[data-type="section"]:has(.eys), div[data-type="section"]:has(.shelf),
+div[data-type="embed"]:has(.eys),   div[data-type="embed"]:has(.shelf){
+  overflow:visible !important;
+}
+
 /* beehiiv renders a 56px white bar with a duplicate copyright line as a direct
    child of <body>, outside the builder's page tree - which is why the Footer
    editor cannot select or delete it. Our own footer already carries the
