@@ -646,3 +646,49 @@ section:has(form input[type="email"]) hr ~ p span{
 
 /* form sits with the text, not adrift */
 section:has(form input[type="email"]) form{ max-width:520px; margin-left:0 !important; }
+
+/* ==========================================================================
+   ACCESSIBILITY — added 2 Sep 2026 after the full audit.
+
+   WCAG 2.4.7 Focus Visible. Measured before this: 0 of 14 focusable
+   elements on the homepage showed any focus indicator - outline:none
+   everywhere. A keyboard user could not tell where they were on any page.
+
+   :focus-visible only fires for keyboard and assistive navigation, so
+   mouse users see nothing change. The cyan is the site's existing "live"
+   signal, so it reads as part of the language rather than a browser default.
+
+   This is global on purpose. Per block-parts/README.md, a site-wide rule
+   belongs in eys.css, not duplicated into blocks.
+   ========================================================================== */
+
+:focus-visible{
+  outline:2px solid #2fb9ea;
+  outline-offset:3px;
+  border-radius:1px;
+}
+/* beehiiv's own chrome sits outside .eys - cover it too */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid #2fb9ea;
+  outline-offset:3px;
+}
+/* on the dark sections cyan on ink is low-contrast - use cream there */
+.eys .dark a:focus-visible,
+.eys .dark button:focus-visible,
+.eys .dark summary:focus-visible{
+  outline-color:#efe6d2;
+}
+/* never remove the indicator, only restyle it */
+:focus:not(:focus-visible){ outline:none; }
+
+/* TAP TARGETS — WCAG 2.5.8 sets a 24x24 floor. Measured at 375px:
+   footer links 20px, "Read the manifesto" 16px. Padding, not size,
+   so nothing moves visually. */
+.eys .foot-nav a{ padding:4px 0; display:inline-block; }
+.eys .more a{ padding:5px 0; display:inline-block; }
