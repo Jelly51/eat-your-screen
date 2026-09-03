@@ -398,7 +398,14 @@
 div[data-type="section"]:has(.eys),
 div[data-type="section"]:has(.shelf){
   height:auto !important; min-height:0 !important;
-  align-items:flex-start !important; justify-content:flex-start !important;
+  /* The section is a COLUMN flex container, so justify-content is the
+     vertical axis - that is the one that stops the header being thrown
+     upward. align-items is the HORIZONTAL axis: flex-start there makes
+     every child shrink to its content width, which collapses the whole
+     layout on narrow screens. Must stay `stretch`. Broke mobile once,
+     2 Sep 2026, by setting it to flex-start. */
+  justify-content:flex-start !important;
+  align-items:stretch !important;
 }
 div[data-type="section"]:has(.eys), div[data-type="section"]:has(.shelf),
 div[data-type="embed"]:has(.eys),   div[data-type="embed"]:has(.shelf){
@@ -671,10 +678,47 @@ section:has(form input[type="email"]) hr ~ p span{
 /* form sits with the text, not adrift */
 section:has(form input[type="email"]) form{ max-width:520px; margin-left:0 !important; }
 
-/* Site-wide accessibility rules moved to eys-global.css on 2 Sep 2026.
-   That file is injected into <head> on EVERY page by the publication's
-   Global header script, including post, archive, tag and author pages
-   which never load this stylesheet. Do not re-add them here. */
+/* ---- FOCUS VISIBLE — WCAG 2.4.7 (AA) -----------------------------------
+   Moved OUT to eys-global.css on 2 Sep 2026, on the assumption that
+   beehiiv's "Global header script" would inject that file into <head> on
+   every page. That setting was never found and support has not answered.
+   Result: eys-global.css sat on GitHub loading on nothing, and the site
+   went a day with no designed focus indicator anywhere.
+
+   Moved BACK 3 Sep 2026. These now cover every page that loads this
+   stylesheet - home, about, reading, manifesto, terms, subscribe.
+
+   THEY STILL DO NOT REACH POST, ARCHIVE, TAG OR AUTHOR PAGES, which never
+   load eys.css. Those pages currently render outline-style:none and have
+   no focus indicator at all. eys-global.css remains the only route to
+   them and is still blocked on beehiiv. Do not assume this is finished.
+
+   Outline cannot affect layout - it draws outside the box and occupies no
+   space - so this is safe to add globally. */
+
+:focus-visible{
+  outline:2px solid #2fb9ea;
+  outline-offset:3px;
+  border-radius:1px;
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid #2fb9ea;
+  outline-offset:3px;
+}
+/* cyan on ink is itself low contrast - cream on the dark sections */
+.eys .dark a:focus-visible,
+.eys .dark button:focus-visible,
+.eys .dark summary:focus-visible{
+  outline-color:#efe6d2;
+}
+/* restyle the indicator for mouse users, never remove it for keyboard */
+:focus:not(:focus-visible){ outline:none; }
 
 /* tap targets — these are .eys-scoped so they belong with the rest */
 .eys .foot-nav a{ padding:4px 0; display:inline-block; }
